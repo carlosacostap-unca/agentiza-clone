@@ -1,0 +1,189 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Asistente IA para Clinicas</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <main class="app-shell">
+      <section class="workspace">
+        <header class="topbar">
+          <div class="brand-block">
+            <div class="brand-mark" aria-hidden="true">
+              <span>AI</span>
+            </div>
+            <div>
+              <p class="eyebrow">Demo operativa</p>
+              <h1>Asistente IA para Clinicas</h1>
+            </div>
+          </div>
+
+          <div class="top-actions" aria-label="Estado de demo">
+            <span class="status-pill">Clinica San Norte</span>
+            <span class="status-pill live">Simulacion activa</span>
+          </div>
+        </header>
+
+        <section class="intro-band">
+          <div>
+            <p class="section-label">Promesa comercial</p>
+            <h2>Tu recepcion responde 24/7 sin agrandar el equipo.</h2>
+            <p>
+              Esta demo muestra como el asistente responde consultas administrativas,
+              captura datos utiles y escala a una persona cuando aparece un caso sensible.
+            </p>
+          </div>
+          <div class="demo-stats" aria-label="Metricas simuladas">
+            <article>
+              <span>18 seg</span>
+              <p>primera respuesta</p>
+            </article>
+            <article>
+              <span>74%</span>
+              <p>consultas repetitivas</p>
+            </article>
+            <article>
+              <span>5</span>
+              <p>flujos demo</p>
+            </article>
+          </div>
+        </section>
+
+        <section class="demo-grid" aria-label="Demo del asistente">
+          <aside class="scenario-panel" aria-label="Escenarios">
+            <div class="panel-heading">
+              <p class="section-label">Escenarios</p>
+              <h2>Probar flujos</h2>
+            </div>
+
+            <div class="scenario-list">
+              <button class="scenario-button active" type="button" data-scenario="horarios">
+                <span>Horarios</span>
+                <small>Consulta repetitiva resuelta por IA</small>
+              </button>
+              <button class="scenario-button" type="button" data-scenario="prestacion">
+                <span>Prestacion</span>
+                <small>Respuesta con datos aprobados</small>
+              </button>
+              <button class="scenario-button" type="button" data-scenario="turno">
+                <span>Pedir turno</span>
+                <small>Captura datos antes de recepcion</small>
+              </button>
+              <button class="scenario-button" type="button" data-scenario="humano">
+                <span>Hablar con persona</span>
+                <small>Handoff con resumen contextual</small>
+              </button>
+              <button class="scenario-button alert" type="button" data-scenario="sensible">
+                <span>Caso sensible</span>
+                <small>No diagnostica y escala</small>
+              </button>
+            </div>
+
+            <div class="guardrail-box">
+              <p class="section-label">Limites del piloto</p>
+              <ul>
+                <li>No diagnostica ni indica tratamientos.</li>
+                <li>Solo usa informacion aprobada por la clinica.</li>
+                <li>Escala sintomas, urgencias y quejas delicadas.</li>
+              </ul>
+            </div>
+          </aside>
+
+          <section class="phone-panel" aria-label="Chat simulado">
+            <div class="phone-frame">
+              <header class="chat-header">
+                <div class="contact-avatar" aria-hidden="true">CS</div>
+                <div>
+                  <h2>Clinica San Norte</h2>
+                  <p>Asistente administrativo</p>
+                </div>
+                <span class="channel-badge">WhatsApp</span>
+              </header>
+
+              <div id="chatLog" class="chat-log" aria-live="polite"></div>
+
+              <form id="chatForm" class="chat-form">
+                <label class="sr-only" for="messageInput">Mensaje del paciente</label>
+                <input
+                  id="messageInput"
+                  name="message"
+                  type="text"
+                  autocomplete="off"
+                  placeholder="Escribir como paciente..."
+                />
+                <button type="submit">Enviar</button>
+              </form>
+            </div>
+          </section>
+
+          <aside class="ops-panel" aria-label="Panel de recepcion">
+            <div class="panel-heading">
+              <p class="section-label">Panel de recepcion</p>
+              <h2>Operacion en vivo</h2>
+            </div>
+
+            <div class="kpi-row">
+              <article>
+                <span id="intentValue">Horarios</span>
+                <p>intencion</p>
+              </article>
+              <article>
+                <span id="statusValue">Resuelto</span>
+                <p>estado</p>
+              </article>
+            </div>
+
+            <section class="info-block">
+              <h3>Datos capturados</h3>
+              <dl id="capturedData"></dl>
+            </section>
+
+            <section class="info-block">
+              <h3>Resumen para humano</h3>
+              <p id="summaryText">
+                El paciente consulta horarios de atencion. La IA responde con informacion aprobada y no requiere intervencion.
+              </p>
+            </section>
+
+            <section class="info-block">
+              <h3>Proximo paso</h3>
+              <p id="nextStepText">Sin accion pendiente.</p>
+            </section>
+
+            <div class="ops-actions">
+              <button id="handoffButton" class="secondary-button" type="button">Derivar</button>
+              <button id="resolveButton" class="primary-button" type="button">Resuelto</button>
+              <button id="resetButton" class="ghost-button" type="button">Reiniciar</button>
+            </div>
+          </aside>
+        </section>
+
+        <section class="bottom-grid" aria-label="Paquete comercial">
+          <article class="plain-section">
+            <p class="section-label">Paquete beta</p>
+            <h2>Implementacion inicial acotada</h2>
+            <ul class="check-list">
+              <li>Diagnostico de consultas y preguntas frecuentes.</li>
+              <li>Base de conocimiento con datos aprobados.</li>
+              <li>Agente administrativo con handoff humano.</li>
+              <li>Panel minimo de conversaciones, intenciones y estados.</li>
+            </ul>
+          </article>
+
+          <article class="plain-section">
+            <p class="section-label">Precio beta sugerido</p>
+            <h2>USD 500 setup + USD 150/mes</h2>
+            <p>
+              Pensado para los primeros pilotos pagos, con alcance cerrado y
+              aprendizaje controlado antes de integrar sistemas mas complejos.
+            </p>
+          </article>
+        </section>
+      </section>
+    </main>
+
+    <script src="app.js"></script>
+  </body>
+</html>
