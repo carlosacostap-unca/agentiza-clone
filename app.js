@@ -5,6 +5,14 @@ const scenarios = {
     patient: "Hola, quisiera saber los horarios y donde estan.",
     assistant:
       "Hola. Clinica Luma atiende en Av. Colon 1840, Cordoba. La recepcion funciona de lunes a viernes de 8:00 a 20:00 y sabados de 9:00 a 13:00. Si queres, puedo ayudarte a pedir un turno.",
+    messages: [
+      ["patient", "Paciente", "Hola, quisiera saber los horarios y donde estan."],
+      ["assistant", "Asistente IA", "Hola. Clinica Luma atiende en Av. Colon 1840, Cordoba. La recepcion funciona de lunes a viernes de 8:00 a 20:00 y sabados de 9:00 a 13:00."],
+      ["patient", "Paciente", "Perfecto. Los sabados atienden todas las especialidades?"],
+      ["assistant", "Asistente IA", "Los sabados funciona recepcion y se atienden turnos programados segun disponibilidad de cada profesional. Para confirmar una especialidad concreta, puedo tomar tus datos y pasarlo a recepcion."],
+      ["patient", "Paciente", "Gracias. Por ahora solo necesitaba la direccion."],
+      ["assistant", "Asistente IA", "De nada. Te dejo el dato: Av. Colon 1840, Cordoba. Si despues queres pedir un turno, escribime por aca y te ayudo a dejar la solicitud ordenada."],
+    ],
     data: {
       Canal: "WhatsApp",
       Nombre: "No informado",
@@ -26,6 +34,14 @@ const scenarios = {
     patient: "Buenas, atienden dermatologia con OSDE?",
     assistant:
       "Si, Clinica Luma atiende dermatologia, clinica medica, cardiologia y oftalmologia. Trabajamos con OSDE, Swiss Medical, Galeno, Sancor Salud y particulares. Para confirmar cobertura segun tu plan, puedo tomar tus datos y pasar la solicitud a recepcion.",
+    messages: [
+      ["patient", "Paciente", "Buenas, atienden dermatologia con OSDE?"],
+      ["assistant", "Asistente IA", "Si, Clinica Luma atiende dermatologia. Tambien trabaja con OSDE, Swiss Medical, Galeno, Sancor Salud y particulares."],
+      ["patient", "Paciente", "Tengo OSDE 210. Queria consultar por manchas en la piel."],
+      ["assistant", "Asistente IA", "Puedo ayudarte con la parte administrativa. Para confirmar cobertura y disponibilidad, pasame nombre completo, DNI y si preferis turno por la manana o por la tarde."],
+      ["patient", "Paciente", "Maria Gomez, DNI 31.456.987. Prefiero por la tarde."],
+      ["assistant", "Asistente IA", "Gracias, Maria. Dejo la solicitud para recepcion: dermatologia, OSDE 210, preferencia por la tarde. Recepcion confirma disponibilidad y condiciones de cobertura."],
+    ],
     data: {
       Canal: "WhatsApp",
       Nombre: "No informado",
@@ -47,6 +63,14 @@ const scenarios = {
     patient: "Necesito sacar turno para cardiologia la semana que viene.",
     assistant:
       "Claro. Para dejar la solicitud ordenada, pasame por favor nombre completo, DNI, cobertura medica y si preferis manana o tarde. Recepcion confirma el horario disponible para cardiologia.",
+    messages: [
+      ["patient", "Paciente", "Necesito sacar turno para cardiologia la semana que viene."],
+      ["assistant", "Asistente IA", "Claro. Para dejar la solicitud ordenada, pasame nombre completo, DNI, cobertura medica y si preferis manana o tarde."],
+      ["patient", "Paciente", "Soy Raul Pereyra, DNI 24.987.120, Swiss Medical. Mejor por la manana."],
+      ["assistant", "Asistente IA", "Gracias, Raul. Registro solicitud para cardiologia, Swiss Medical, preferencia por la manana."],
+      ["patient", "Paciente", "Es por un control anual, no es urgencia."],
+      ["assistant", "Asistente IA", "Perfecto. Agrego que es control anual no urgente. Recepcion revisa disponibilidad y te confirma el turno por este canal."],
+    ],
     data: {
       Canal: "WhatsApp",
       Nombre: "Pendiente",
@@ -68,6 +92,14 @@ const scenarios = {
     patient: "Hola, confirmo mi turno de manana a las 16 con dermatologia.",
     assistant:
       "Gracias. Dejo confirmado el turno de dermatologia de manana a las 16:00. Si necesitases reprogramarlo, escribi 'reprogramar' y te ayudo a avisar a recepcion.",
+    messages: [
+      ["patient", "Paciente", "Hola, confirmo mi turno de manana a las 16 con dermatologia."],
+      ["assistant", "Asistente IA", "Gracias. Para dejarlo bien registrado, me confirmas nombre completo?"],
+      ["patient", "Paciente", "Ana Lopez."],
+      ["assistant", "Asistente IA", "Listo, Ana. Dejo confirmado el turno de dermatologia de manana a las 16:00."],
+      ["patient", "Paciente", "Tengo que llevar algo?"],
+      ["assistant", "Asistente IA", "Trae DNI, credencial de cobertura y estudios previos si los tenes. Si necesitases reprogramar, escribi 'reprogramar' y aviso a recepcion."],
+    ],
     data: {
       Canal: "WhatsApp",
       Nombre: "No informado",
@@ -89,6 +121,14 @@ const scenarios = {
     patient: "No puedo ir al turno de hoy, necesito cambiarlo para la semana que viene.",
     assistant:
       "Entendido. Para reprogramarlo, indicame nombre completo, especialidad, dia u horario preferido y si mantenes la misma cobertura. Recepcion revisa disponibilidad y te confirma el nuevo turno.",
+    messages: [
+      ["patient", "Paciente", "No puedo ir al turno de hoy, necesito cambiarlo para la semana que viene."],
+      ["assistant", "Asistente IA", "Entendido. Para reprogramarlo, indicame nombre completo, especialidad, dia u horario preferido y si mantenes la misma cobertura."],
+      ["patient", "Paciente", "Jorge Diaz, oftalmologia, Galeno. Puede ser martes o jueves despues de las 17."],
+      ["assistant", "Asistente IA", "Gracias, Jorge. Dejo pedido de reprogramacion para oftalmologia, Galeno, martes o jueves despues de las 17."],
+      ["patient", "Paciente", "El turno de hoy era a las 18."],
+      ["assistant", "Asistente IA", "Agrego ese dato para recepcion. El equipo revisa agenda y te confirma el nuevo horario. Mientras tanto, marco la conversacion como pendiente de agenda."],
+    ],
     data: {
       Canal: "WhatsApp",
       Nombre: "Pendiente",
@@ -110,6 +150,14 @@ const scenarios = {
     patient: "Tengo un electrocardiograma, necesito ir en ayunas?",
     assistant:
       "Para electrocardiograma no se requiere ayuno segun la guia administrativa cargada. Te sugerimos traer DNI, credencial de cobertura y orden medica si corresponde. Si tenes una indicacion particular de tu profesional, segui esa indicacion.",
+    messages: [
+      ["patient", "Paciente", "Tengo un electrocardiograma, necesito ir en ayunas?"],
+      ["assistant", "Asistente IA", "Segun la guia administrativa cargada, para electrocardiograma no se requiere ayuno."],
+      ["patient", "Paciente", "Tengo que llevar orden medica?"],
+      ["assistant", "Asistente IA", "Si tu cobertura lo solicita, trae orden medica. Tambien trae DNI y credencial de cobertura."],
+      ["patient", "Paciente", "Es con Sancor Salud."],
+      ["assistant", "Asistente IA", "Perfecto. Para Sancor Salud, recepcion puede confirmar si tu plan requiere autorizacion. Si queres, te derivo para validar ese detalle antes del turno."],
+    ],
     data: {
       Canal: "WhatsApp",
       Nombre: "No informado",
@@ -131,6 +179,14 @@ const scenarios = {
     patient: "Me pueden mandar los resultados de mis estudios por aca?",
     assistant:
       "Para proteger tu informacion, no envio resultados por este chat. Puedo derivarte a recepcion para indicarte el canal habilitado y los requisitos de validacion de identidad.",
+    messages: [
+      ["patient", "Paciente", "Me pueden mandar los resultados de mis estudios por aca?"],
+      ["assistant", "Asistente IA", "Para proteger tu informacion, no envio resultados por este chat sin validacion de identidad."],
+      ["patient", "Paciente", "Soy el paciente, los necesito para llevarlos al medico."],
+      ["assistant", "Asistente IA", "Entiendo. Puedo derivarte a recepcion para indicarte el canal habilitado y los requisitos de validacion."],
+      ["patient", "Paciente", "Bueno, que datos necesitan?"],
+      ["assistant", "Asistente IA", "Dejo la conversacion marcada para recepcion. Ellos te indicaran el procedimiento autorizado para retirar o recibir resultados de forma segura."],
+    ],
     data: {
       Canal: "WhatsApp",
       Nombre: "No informado",
@@ -152,6 +208,14 @@ const scenarios = {
     patient: "Prefiero hablar con una persona.",
     assistant:
       "Por supuesto. Te voy a derivar con recepcion. Mientras tanto, dejo un resumen de esta conversacion para que no tengas que repetir todo.",
+    messages: [
+      ["patient", "Paciente", "Prefiero hablar con una persona."],
+      ["assistant", "Asistente IA", "Por supuesto. Te voy a derivar con recepcion."],
+      ["patient", "Paciente", "Es por un tema de cobertura que no quiero explicar dos veces."],
+      ["assistant", "Asistente IA", "Entiendo. Dejo indicado que queres hablar con recepcion por un tema de cobertura."],
+      ["patient", "Paciente", "Gracias."],
+      ["assistant", "Asistente IA", "Listo. La conversacion queda pausada para que recepcion la tome con este resumen y no tengas que repetir todo."],
+    ],
     data: {
       Canal: "WhatsApp",
       Nombre: "No informado",
@@ -173,6 +237,14 @@ const scenarios = {
     patient: "Hace dos dias escribo y nadie me contesta. Necesito una solucion.",
     assistant:
       "Lamento la demora. Voy a marcar esta conversacion como prioritaria para recepcion y dejar un resumen para que puedan responderte sin pedirte que repitas todo.",
+    messages: [
+      ["patient", "Paciente", "Hace dos dias escribo y nadie me contesta. Necesito una solucion."],
+      ["assistant", "Asistente IA", "Lamento la demora. Voy a marcar esta conversacion como prioritaria para recepcion."],
+      ["patient", "Paciente", "Tenia que confirmar un turno y ahora no se si lo perdi."],
+      ["assistant", "Asistente IA", "Entiendo. Para que recepcion revise rapido, me indicas nombre completo, especialidad y fecha aproximada del turno?"],
+      ["patient", "Paciente", "Laura Medina, clinica medica, era para hoy a la tarde."],
+      ["assistant", "Asistente IA", "Gracias, Laura. Dejo el reclamo priorizado con el motivo: posible perdida de turno por demora de respuesta. Recepcion debe revisar agenda y contactarte."],
+    ],
     data: {
       Canal: "WhatsApp",
       Nombre: "No informado",
@@ -194,6 +266,14 @@ const scenarios = {
     patient: "Tengo dolor fuerte en el pecho y me cuesta respirar, que hago?",
     assistant:
       "No puedo evaluar sintomas ni indicar tratamiento por este canal. Si tenes dolor fuerte en el pecho o dificultad para respirar, busca atencion medica urgente o comunicate con emergencias. Tambien voy a marcar esta conversacion para que el equipo la revise.",
+    messages: [
+      ["patient", "Paciente", "Tengo dolor fuerte en el pecho y me cuesta respirar, que hago?"],
+      ["assistant", "Asistente IA", "No puedo evaluar sintomas ni indicar tratamiento por este canal."],
+      ["assistant", "Asistente IA", "Si tenes dolor fuerte en el pecho o dificultad para respirar, busca atencion medica urgente o comunicate con emergencias."],
+      ["patient", "Paciente", "Puedo ir a la clinica ahora?"],
+      ["assistant", "Asistente IA", "No puedo orientarte clinicamente por chat. Por seguridad, busca atencion medica urgente o llama a emergencias. Tambien marco esta conversacion para revision del equipo."],
+      ["system", "Sistema", "Automatizacion libre bloqueada. Conversacion escalada por sintoma sensible."],
+    ],
     data: {
       Canal: "WhatsApp",
       Nombre: "No informado",
@@ -360,8 +440,12 @@ function runScenario(name) {
   setActiveButton(name);
   chatLog.innerHTML = "";
   addMessage("system", "Sistema", "Nuevo contacto entrante desde WhatsApp.");
-  addMessage("patient", "Paciente", flow.patient);
-  addMessage("assistant", "Asistente IA", flow.assistant);
+  if (flow.messages) {
+    flow.messages.forEach(([role, label, text]) => addMessage(role, label, text));
+  } else {
+    addMessage("patient", "Paciente", flow.patient);
+    addMessage("assistant", "Asistente IA", flow.assistant);
+  }
   updateOpsPanel(flow);
 }
 

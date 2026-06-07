@@ -532,8 +532,8 @@ h3 {
   display: flex;
   flex-direction: column;
   gap: 10px;
-  min-height: 520px;
-  max-height: 62vh;
+  min-height: 620px;
+  max-height: 72vh;
   overflow: auto;
   padding: 18px;
   background:
