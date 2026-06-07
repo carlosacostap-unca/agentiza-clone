@@ -14,6 +14,11 @@ const scenarios = {
     summary:
       "El paciente consulta horarios y ubicacion. La IA responde con informacion aprobada y no requiere intervencion.",
     nextStep: "Sin accion pendiente.",
+    confidence: "96%",
+    assignee: "IA",
+    sla: "Sin SLA",
+    source: "Base: horarios, ubicacion y canales oficiales.",
+    tags: ["faq", "ubicacion", "resuelto"],
   },
   prestacion: {
     intent: "Prestacion y cobertura",
@@ -30,6 +35,11 @@ const scenarios = {
     summary:
       "El paciente consulta por dermatologia y cobertura OSDE. La IA confirma informacion general aprobada y propone capturar datos para recepcion.",
     nextStep: "Pedir nombre, DNI, cobertura, plan y franja horaria preferida.",
+    confidence: "91%",
+    assignee: "Recepcion",
+    sla: "Normal",
+    source: "Base: especialidades y coberturas aprobadas.",
+    tags: ["cobertura", "dermatologia", "capturar-datos"],
   },
   turno: {
     intent: "Solicitud de turno",
@@ -46,6 +56,95 @@ const scenarios = {
     summary:
       "El paciente quiere pedir turno de cardiologia. La IA solicita datos minimos antes de derivar a agenda.",
     nextStep: "Esperar datos del paciente y derivar a agenda.",
+    confidence: "94%",
+    assignee: "Agenda",
+    sla: "Normal",
+    source: "Playbook: solicitud de turno y datos obligatorios.",
+    tags: ["turno", "cardiologia", "agenda"],
+  },
+  confirmacion: {
+    intent: "Confirmacion de turno",
+    status: "Resuelto",
+    patient: "Hola, confirmo mi turno de manana a las 16 con dermatologia.",
+    assistant:
+      "Gracias. Dejo confirmado el turno de dermatologia de manana a las 16:00. Si necesitases reprogramarlo, escribi 'reprogramar' y te ayudo a avisar a recepcion.",
+    data: {
+      Canal: "WhatsApp",
+      Nombre: "No informado",
+      Motivo: "Confirma turno",
+      Riesgo: "Bajo",
+    },
+    summary:
+      "El paciente confirma un turno. La IA registra la confirmacion y no requiere intervencion.",
+    nextStep: "Registrar confirmacion en agenda si el piloto esta integrado.",
+    confidence: "95%",
+    assignee: "IA",
+    sla: "Sin SLA",
+    source: "Playbook: confirmacion de turnos.",
+    tags: ["confirmacion", "agenda", "ausentismo"],
+  },
+  reprogramar: {
+    intent: "Reprogramacion",
+    status: "Pendiente",
+    patient: "No puedo ir al turno de hoy, necesito cambiarlo para la semana que viene.",
+    assistant:
+      "Entendido. Para reprogramarlo, indicame nombre completo, especialidad, dia u horario preferido y si mantenes la misma cobertura. Recepcion revisa disponibilidad y te confirma el nuevo turno.",
+    data: {
+      Canal: "WhatsApp",
+      Nombre: "Pendiente",
+      Motivo: "Reprogramar turno",
+      Riesgo: "Bajo",
+    },
+    summary:
+      "El paciente solicita reprogramar un turno. La IA pide datos minimos y deja la conversacion lista para recepcion.",
+    nextStep: "Derivar a agenda con prioridad normal.",
+    confidence: "90%",
+    assignee: "Agenda",
+    sla: "Normal",
+    source: "Playbook: cambios de agenda.",
+    tags: ["reprogramacion", "agenda", "pendiente"],
+  },
+  estudios: {
+    intent: "Preparacion de estudio",
+    status: "Respondido",
+    patient: "Tengo un electrocardiograma, necesito ir en ayunas?",
+    assistant:
+      "Para electrocardiograma no se requiere ayuno segun la guia administrativa cargada. Te sugerimos traer DNI, credencial de cobertura y orden medica si corresponde. Si tenes una indicacion particular de tu profesional, segui esa indicacion.",
+    data: {
+      Canal: "WhatsApp",
+      Nombre: "No informado",
+      Motivo: "Preparacion electrocardiograma",
+      Riesgo: "Bajo",
+    },
+    summary:
+      "El paciente consulta preparacion para electrocardiograma. La IA responde con instrucciones administrativas aprobadas y aclara que prevalece la indicacion del profesional.",
+    nextStep: "Sin accion pendiente, salvo que pida hablar con recepcion.",
+    confidence: "89%",
+    assignee: "IA",
+    sla: "Sin SLA",
+    source: "Base: preparacion de estudios aprobada.",
+    tags: ["preparacion", "estudio", "cardiologia"],
+  },
+  resultados: {
+    intent: "Resultados",
+    status: "Derivar",
+    patient: "Me pueden mandar los resultados de mis estudios por aca?",
+    assistant:
+      "Para proteger tu informacion, no envio resultados por este chat. Puedo derivarte a recepcion para indicarte el canal habilitado y los requisitos de validacion de identidad.",
+    data: {
+      Canal: "WhatsApp",
+      Nombre: "No informado",
+      Motivo: "Consulta resultados",
+      Riesgo: "Medio",
+    },
+    summary:
+      "El paciente solicita resultados. La IA no comparte informacion sensible y deriva para validacion por canal autorizado.",
+    nextStep: "Derivar a recepcion para validar identidad y canal habilitado.",
+    confidence: "93%",
+    assignee: "Recepcion",
+    sla: "Medio",
+    source: "Regla: no compartir resultados por chat sin validacion.",
+    tags: ["privacidad", "resultados", "derivar"],
   },
   humano: {
     intent: "Handoff",
@@ -62,6 +161,32 @@ const scenarios = {
     summary:
       "El paciente solicita hablar con una persona. La IA detiene la automatizacion y prepara handoff contextual.",
     nextStep: "Asignar a recepcion.",
+    confidence: "98%",
+    assignee: "Recepcion",
+    sla: "Normal",
+    source: "Regla: pedido explicito de humano.",
+    tags: ["handoff", "humano", "derivar"],
+  },
+  queja: {
+    intent: "Reclamo",
+    status: "Escalar",
+    patient: "Hace dos dias escribo y nadie me contesta. Necesito una solucion.",
+    assistant:
+      "Lamento la demora. Voy a marcar esta conversacion como prioritaria para recepcion y dejar un resumen para que puedan responderte sin pedirte que repitas todo.",
+    data: {
+      Canal: "WhatsApp",
+      Nombre: "No informado",
+      Motivo: "Reclamo por demora",
+      Riesgo: "Medio",
+    },
+    summary:
+      "El paciente reclama demora de respuesta. La IA reconoce el problema, no discute y escala con prioridad.",
+    nextStep: "Asignar a coordinacion de recepcion.",
+    confidence: "92%",
+    assignee: "Coordinacion",
+    sla: "Prioritario",
+    source: "Playbook: reclamos y experiencia del paciente.",
+    tags: ["reclamo", "prioridad", "experiencia"],
   },
   sensible: {
     intent: "Caso sensible",
@@ -78,6 +203,11 @@ const scenarios = {
     summary:
       "El paciente describe sintomas potencialmente urgentes. La IA no diagnostica, recomienda atencion urgente y escala al equipo.",
     nextStep: "Escalar de inmediato y bloquear respuesta automatica libre.",
+    confidence: "99%",
+    assignee: "Recepcion",
+    sla: "Urgente",
+    source: "Regla critica: sintomas sensibles y urgencias.",
+    tags: ["urgencia", "bloqueo-medico", "escalar"],
   },
 };
 
@@ -95,7 +225,32 @@ const fallback = {
   summary:
     "El paciente hizo una consulta que no coincide con los flujos principales. Conviene revisar y decidir si se agrega a la base de conocimiento.",
   nextStep: "Revisar conversacion y clasificar.",
+  confidence: "62%",
+  assignee: "Recepcion",
+  sla: "Revision",
+  source: "Sin fuente suficiente.",
+  tags: ["no-clasificado", "revisar"],
 };
+
+const baseQueue = [
+  ["Maria Gomez", "Turno dermatologia", "Pendiente"],
+  ["Jorge Diaz", "Resultado de estudio", "Derivar"],
+  ["Ana Lopez", "Confirma turno", "Resuelto"],
+  ["Paciente sin nombre", "Sintoma sensible", "Urgente"],
+];
+
+const knowledgeItems = [
+  ["Horarios", "Lun-vie 8:00 a 20:00, sab 9:00 a 13:00"],
+  ["Especialidades", "Clinica medica, cardiologia, dermatologia, oftalmologia"],
+  ["Coberturas", "OSDE, Swiss Medical, Galeno, Sancor Salud, particulares"],
+  ["Reglas", "No diagnosticar, no interpretar resultados, escalar urgencias"],
+];
+
+const baseActivity = [
+  ["08:42", "IA respondio consulta de ubicacion"],
+  ["08:45", "Agenda recibio solicitud de cardiologia"],
+  ["08:50", "Recepcion tomo consulta de resultados"],
+];
 
 const chatLog = document.querySelector("#chatLog");
 const chatForm = document.querySelector("#chatForm");
@@ -106,6 +261,14 @@ const statusValue = document.querySelector("#statusValue");
 const capturedData = document.querySelector("#capturedData");
 const summaryText = document.querySelector("#summaryText");
 const nextStepText = document.querySelector("#nextStepText");
+const confidenceValue = document.querySelector("#confidenceValue");
+const assigneeValue = document.querySelector("#assigneeValue");
+const slaValue = document.querySelector("#slaValue");
+const sourceText = document.querySelector("#sourceText");
+const tagList = document.querySelector("#tagList");
+const queueList = document.querySelector("#queueList");
+const knowledgeList = document.querySelector("#knowledgeList");
+const activityList = document.querySelector("#activityList");
 const handoffButton = document.querySelector("#handoffButton");
 const resolveButton = document.querySelector("#resolveButton");
 const resetButton = document.querySelector("#resetButton");
@@ -114,8 +277,13 @@ let activeScenario = "horarios";
 
 function addMessage(role, label, text) {
   const message = document.createElement("article");
+  const sender = document.createElement("strong");
+  const body = document.createElement("p");
+
   message.className = `message ${role}`;
-  message.innerHTML = `<strong>${label}</strong><p>${text}</p>`;
+  sender.textContent = label;
+  body.textContent = text;
+  message.append(sender, body);
   chatLog.appendChild(message);
   chatLog.scrollTop = chatLog.scrollHeight;
 }
@@ -137,12 +305,53 @@ function renderCapturedData(data) {
   });
 }
 
+function renderTags(tags) {
+  tagList.innerHTML = "";
+  tags.forEach((tag) => {
+    const item = document.createElement("span");
+    item.textContent = tag;
+    tagList.appendChild(item);
+  });
+}
+
+function renderList(target, rows) {
+  target.innerHTML = "";
+  rows.forEach(([title, detail, state]) => {
+    const item = document.createElement("li");
+    item.innerHTML = state
+      ? `<strong>${title}</strong>${detail}<br><small>${state}</small>`
+      : `<strong>${title}</strong>${detail}`;
+    target.appendChild(item);
+  });
+}
+
+function renderActivity(flow) {
+  const rows = [
+    [new Date().toLocaleTimeString("es-AR", { hour: "2-digit", minute: "2-digit" }), `Escenario activo: ${flow.intent}`],
+    ...baseActivity,
+  ];
+  renderList(activityList, rows);
+}
+
+function renderQueue(flow) {
+  const rows = [[flow.data.Nombre, flow.data.Motivo, flow.status], ...baseQueue];
+  renderList(queueList, rows);
+}
+
 function updateOpsPanel(flow) {
   intentValue.textContent = flow.intent;
   statusValue.textContent = flow.status;
+  confidenceValue.textContent = flow.confidence;
+  assigneeValue.textContent = flow.assignee;
+  slaValue.textContent = flow.sla;
   renderCapturedData(flow.data);
+  sourceText.textContent = flow.source;
+  renderTags(flow.tags);
   summaryText.textContent = flow.summary;
   nextStepText.textContent = flow.nextStep;
+  renderQueue(flow);
+  renderList(knowledgeList, knowledgeItems);
+  renderActivity(flow);
 }
 
 function runScenario(name) {
@@ -170,12 +379,54 @@ function detectScenario(text) {
   }
 
   if (
+    normalized.includes("queja") ||
+    normalized.includes("reclamo") ||
+    normalized.includes("nadie me contesta") ||
+    normalized.includes("demora")
+  ) {
+    return "queja";
+  }
+
+  if (
     normalized.includes("persona") ||
     normalized.includes("humano") ||
     normalized.includes("recepcion") ||
     normalized.includes("asesor")
   ) {
     return "humano";
+  }
+
+  if (
+    normalized.includes("confirmo") ||
+    normalized.includes("confirmar") ||
+    normalized.includes("confirmacion")
+  ) {
+    return "confirmacion";
+  }
+
+  if (
+    normalized.includes("reprogramar") ||
+    normalized.includes("cambiar") ||
+    normalized.includes("no puedo ir")
+  ) {
+    return "reprogramar";
+  }
+
+  if (
+    normalized.includes("resultado") ||
+    normalized.includes("estudios por aca") ||
+    normalized.includes("informe")
+  ) {
+    return "resultados";
+  }
+
+  if (
+    normalized.includes("ayunas") ||
+    normalized.includes("preparacion") ||
+    normalized.includes("electrocardiograma") ||
+    normalized.includes("ecg")
+  ) {
+    return "estudios";
   }
 
   if (

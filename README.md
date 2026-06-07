@@ -6,18 +6,30 @@ Demo inicial para validar una empresa tipo Agentiza enfocada en automatizacion c
 
 - Chat simulado estilo WhatsApp para pacientes.
 - Landing comercial para presentar el piloto beta.
+- Hero visual generado y guardado en `assets/hero-clinic-ops.png`.
 - Escenarios administrativos de clinica:
   - horarios;
   - prestaciones;
   - solicitud de turno;
+  - confirmacion de turno;
+  - reprogramacion;
+  - preparacion de estudios;
+  - solicitud de resultados;
   - handoff a recepcion;
+  - reclamos;
   - caso sensible con escalamiento.
 - Panel operativo para recepcion:
   - intencion detectada;
   - estado;
+  - confianza;
+  - asignacion;
+  - prioridad;
   - datos capturados;
+  - fuente usada;
+  - etiquetas;
   - resumen;
   - proximo paso.
+- Vista de supervision con cola de conversaciones, base de conocimiento y actividad.
 - Documentos estrategicos:
   - `dossier-agentiza.md`;
   - `plan-accion-7-dias.md`.

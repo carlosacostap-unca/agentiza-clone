@@ -22,6 +22,7 @@
 
           <div class="top-actions" aria-label="Estado de demo">
             <a class="nav-link" href="#demo">Ver demo</a>
+            <a class="nav-link" href="#proceso">Proceso</a>
             <a class="nav-link" href="#piloto">Piloto beta</a>
             <span class="status-pill">Clinica Luma</span>
             <span class="status-pill live">Simulacion activa</span>
@@ -41,33 +42,59 @@
               <a class="primary-link" href="#demo">Probar la demo</a>
               <a class="secondary-link" href="#piloto">Ver paquete beta</a>
             </div>
+            <div class="hero-proof" aria-label="Indicadores del piloto">
+              <span>Sin diagnostico medico</span>
+              <span>Handoff humano</span>
+              <span>Base aprobada por la clinica</span>
+            </div>
           </div>
-          <aside class="hero-visual" aria-label="Vista resumida del sistema">
-            <div class="visual-toolbar">
-              <span></span>
-              <span></span>
-              <span></span>
-            </div>
-            <div class="visual-card highlighted">
-              <strong>Maria Gomez</strong>
-              <p>Solicita turno de dermatologia para la tarde.</p>
-              <small>Datos capturados: obra social, edad, disponibilidad</small>
-            </div>
-            <div class="visual-grid">
-              <article>
-                <span>82%</span>
-                <p>consultas resueltas</p>
-              </article>
-              <article>
-                <span>12</span>
-                <p>derivaciones</p>
-              </article>
-            </div>
-            <div class="visual-card alert-line">
-              <strong>Escalar</strong>
-              <p>Sintomas sensibles detectados. Respuesta medica bloqueada.</p>
-            </div>
-          </aside>
+        </section>
+
+        <section class="problem-section" aria-label="Problemas que resuelve">
+          <div class="section-copy">
+            <p class="section-label">El problema</p>
+            <h2>Recepcion no pierde pacientes por falta de voluntad. Los pierde por volumen.</h2>
+            <p>
+              WhatsApp mezcla consultas simples, pedidos de turno, coberturas,
+              reprogramaciones, quejas y sintomas sensibles en el mismo canal.
+              El resultado es demora, informacion repetida y poco seguimiento.
+            </p>
+          </div>
+          <div class="problem-grid">
+            <article>
+              <span>01</span>
+              <h3>Consultas repetidas</h3>
+              <p>Horarios, ubicacion, especialidades, obras sociales y requisitos ocupan horas de recepcion.</p>
+            </article>
+            <article>
+              <span>02</span>
+              <h3>Turnos incompletos</h3>
+              <p>Faltan datos basicos y recepcion vuelve a preguntar lo mismo antes de agendar.</p>
+            </article>
+            <article>
+              <span>03</span>
+              <h3>Casos delicados</h3>
+              <p>Una IA sin limites puede responder de mas. El sistema debe escalar cuando corresponde.</p>
+            </article>
+          </div>
+        </section>
+
+        <section class="solution-strip" aria-label="Como funciona">
+          <article>
+            <p class="section-label">01</p>
+            <h3>Responde con fuentes aprobadas</h3>
+            <p>Usa horarios, especialidades, cobertura, ubicacion y reglas definidas por la clinica.</p>
+          </article>
+          <article>
+            <p class="section-label">02</p>
+            <h3>Captura datos antes de derivar</h3>
+            <p>Nombre, DNI, cobertura, especialidad, disponibilidad y motivo quedan listos para recepcion.</p>
+          </article>
+          <article>
+            <p class="section-label">03</p>
+            <h3>Escala sin improvisar</h3>
+            <p>Bloquea diagnosticos, sintomas sensibles, urgencias, reclamos y pedidos de humano.</p>
+          </article>
         </section>
 
         <section class="intro-band" aria-label="Contexto de clinica demo">
@@ -90,7 +117,7 @@
               <p>consultas repetitivas</p>
             </article>
             <article>
-              <span>5</span>
+              <span>10</span>
               <p>flujos demo</p>
             </article>
           </div>
@@ -116,9 +143,29 @@
                 <span>Pedir turno</span>
                 <small>Captura datos antes de recepcion</small>
               </button>
+              <button class="scenario-button" type="button" data-scenario="confirmacion">
+                <span>Confirmar turno</span>
+                <small>Reduce ausentismo y llamadas</small>
+              </button>
+              <button class="scenario-button" type="button" data-scenario="reprogramar">
+                <span>Reprogramar</span>
+                <small>Ordena cambios de agenda</small>
+              </button>
+              <button class="scenario-button" type="button" data-scenario="estudios">
+                <span>Preparacion</span>
+                <small>Instrucciones aprobadas</small>
+              </button>
+              <button class="scenario-button" type="button" data-scenario="resultados">
+                <span>Resultados</span>
+                <small>Deriva sin exponer informacion</small>
+              </button>
               <button class="scenario-button" type="button" data-scenario="humano">
                 <span>Hablar con persona</span>
                 <small>Handoff con resumen contextual</small>
+              </button>
+              <button class="scenario-button alert" type="button" data-scenario="queja">
+                <span>Reclamo</span>
+                <small>Prioriza experiencia del paciente</small>
               </button>
               <button class="scenario-button alert" type="button" data-scenario="sensible">
                 <span>Caso sensible</span>
@@ -180,9 +227,34 @@
               </article>
             </div>
 
+            <div class="triage-row">
+              <article>
+                <span id="confidenceValue">96%</span>
+                <p>confianza</p>
+              </article>
+              <article>
+                <span id="assigneeValue">IA</span>
+                <p>asignado</p>
+              </article>
+              <article>
+                <span id="slaValue">Sin SLA</span>
+                <p>prioridad</p>
+              </article>
+            </div>
+
             <section class="info-block">
               <h3>Datos capturados</h3>
               <dl id="capturedData"></dl>
+            </section>
+
+            <section class="info-block">
+              <h3>Fuente usada</h3>
+              <p id="sourceText">Base: horarios y ubicacion aprobados.</p>
+            </section>
+
+            <section class="info-block">
+              <h3>Etiquetas</h3>
+              <div id="tagList" class="tag-list"></div>
             </section>
 
             <section class="info-block">
@@ -205,6 +277,68 @@
           </aside>
         </section>
 
+        <section class="ops-dashboard" aria-label="Vista completa de operacion">
+          <div class="section-copy">
+            <p class="section-label">Vista de supervision</p>
+            <h2>La clinica ve conversaciones, causas y acciones pendientes.</h2>
+            <p>
+              La demo no es solo un chat: muestra como recepcion podria controlar
+              lo que la IA resolvio, lo que debe revisar y que informacion uso.
+            </p>
+          </div>
+          <div class="ops-dashboard-grid">
+            <article>
+              <h3>Cola de conversaciones</h3>
+              <ul id="queueList" class="queue-list"></ul>
+            </article>
+            <article>
+              <h3>Base de conocimiento</h3>
+              <ul id="knowledgeList" class="knowledge-list"></ul>
+            </article>
+            <article>
+              <h3>Actividad</h3>
+              <ul id="activityList" class="activity-list"></ul>
+            </article>
+          </div>
+        </section>
+
+        <section id="proceso" class="process-section" aria-label="Proceso de implementacion">
+          <div class="section-copy">
+            <p class="section-label">Implementacion</p>
+            <h2>Un piloto de 14 dias para validar valor antes de integrar sistemas complejos.</h2>
+          </div>
+          <div class="process-grid">
+            <article>
+              <span>Semana 1</span>
+              <h3>Relevamiento</h3>
+              <p>Preguntas frecuentes, reglas, derivaciones, horarios, especialidades, cobertura y tono.</p>
+            </article>
+            <article>
+              <span>Semana 2</span>
+              <h3>Configuracion</h3>
+              <p>Base de conocimiento, escenarios, pruebas con recepcion y ajustes de seguridad.</p>
+            </article>
+            <article>
+              <span>Salida</span>
+              <h3>Piloto controlado</h3>
+              <p>Medicion de consultas resueltas, tiempos, derivaciones y oportunidades de mejora.</p>
+            </article>
+          </div>
+        </section>
+
+        <section class="safety-section" aria-label="Seguridad y limites">
+          <article>
+            <p class="section-label">Seguridad</p>
+            <h2>Disenado para operar en administracion, no para reemplazar criterio medico.</h2>
+          </article>
+          <ul class="safety-list">
+            <li>Responde solo informacion administrativa aprobada.</li>
+            <li>No interpreta estudios, sintomas ni diagnosticos.</li>
+            <li>Escala urgencias, quejas, menores y pedidos explicitos de humano.</li>
+            <li>Deja resumen y trazabilidad para recepcion.</li>
+          </ul>
+        </section>
+
         <section id="piloto" class="bottom-grid" aria-label="Paquete comercial">
           <article class="plain-section">
             <p class="section-label">Paquete beta</p>
@@ -225,6 +359,31 @@
               aprendizaje controlado antes de integrar sistemas mas complejos.
             </p>
           </article>
+        </section>
+
+        <section class="faq-section" aria-label="Preguntas frecuentes">
+          <div class="section-copy">
+            <p class="section-label">FAQ</p>
+            <h2>Objeciones esperables antes de comprar.</h2>
+          </div>
+          <div class="faq-grid">
+            <article>
+              <h3>La IA puede dar consejos medicos?</h3>
+              <p>No. El piloto esta limitado a informacion administrativa y escalamiento.</p>
+            </article>
+            <article>
+              <h3>Necesitamos cambiar nuestro WhatsApp?</h3>
+              <p>Para la demo no. Para piloto real se define el mejor camino: proveedor, WhatsApp Business API o fase web previa.</p>
+            </article>
+            <article>
+              <h3>Que pasa si la IA no sabe?</h3>
+              <p>Responde que no tiene informacion suficiente, etiqueta la conversacion y la deriva a recepcion.</p>
+            </article>
+            <article>
+              <h3>Como medimos si funciono?</h3>
+              <p>Tiempo de primera respuesta, consultas resueltas, derivaciones, preguntas frecuentes y ahorro estimado.</p>
+            </article>
+          </div>
         </section>
       </section>
     </main>
