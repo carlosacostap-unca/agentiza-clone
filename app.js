@@ -386,8 +386,21 @@ const activityList = document.querySelector("#activityList");
 const handoffButton = document.querySelector("#handoffButton");
 const resolveButton = document.querySelector("#resolveButton");
 const resetButton = document.querySelector("#resetButton");
+const platformTitle = document.querySelector("#platformTitle");
+const platformNavButtons = document.querySelectorAll(".platform-nav-button");
+const platformViews = document.querySelectorAll(".platform-view");
 
 let activeScenario = "horarios";
+
+const platformTitles = {
+  dashboard: "Dashboard",
+  inbox: "Inbox omnicanal",
+  agenda: "Agenda",
+  knowledge: "Base de conocimiento",
+  flows: "Flujos IA",
+  metrics: "Metricas",
+  settings: "Ajustes",
+};
 
 function addMessage(role, label, text) {
   const message = document.createElement("article");
@@ -645,6 +658,22 @@ resolveButton.addEventListener("click", () => {
 
 resetButton.addEventListener("click", () => {
   runScenario("horarios");
+});
+
+platformNavButtons.forEach((button) => {
+  button.addEventListener("click", () => {
+    const view = button.dataset.view;
+
+    platformNavButtons.forEach((item) => {
+      item.classList.toggle("active", item === button);
+    });
+
+    platformViews.forEach((panel) => {
+      panel.classList.toggle("active", panel.dataset.viewPanel === view);
+    });
+
+    platformTitle.textContent = platformTitles[view];
+  });
 });
 
 runScenario("horarios");

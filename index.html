@@ -22,6 +22,7 @@
 
           <div class="top-actions" aria-label="Estado de demo">
             <a class="nav-link" href="#demo">Ver demo</a>
+            <a class="nav-link" href="#plataforma">Plataforma</a>
             <a class="nav-link" href="#proceso">Proceso</a>
             <a class="nav-link" href="#piloto">Piloto beta</a>
             <span class="status-pill">Clinica Luma</span>
@@ -299,6 +300,233 @@
               <h3>Actividad</h3>
               <ul id="activityList" class="activity-list"></ul>
             </article>
+          </div>
+        </section>
+
+        <section id="plataforma" class="platform-section" aria-label="Prototipo navegable">
+          <div class="platform-shell">
+            <aside class="platform-sidebar" aria-label="Navegacion de plataforma">
+              <div class="platform-tenant">
+                <div class="brand-mark small" aria-hidden="true">
+                  <span>CL</span>
+                </div>
+                <div>
+                  <strong>Clinica Luma</strong>
+                  <p>Workspace operativo</p>
+                </div>
+              </div>
+
+              <nav class="platform-nav" aria-label="Vistas del prototipo">
+                <button class="platform-nav-button active" type="button" data-view="dashboard">Dashboard</button>
+                <button class="platform-nav-button" type="button" data-view="inbox">Inbox</button>
+                <button class="platform-nav-button" type="button" data-view="agenda">Agenda</button>
+                <button class="platform-nav-button" type="button" data-view="knowledge">Conocimiento</button>
+                <button class="platform-nav-button" type="button" data-view="flows">Flujos IA</button>
+                <button class="platform-nav-button" type="button" data-view="metrics">Metricas</button>
+                <button class="platform-nav-button" type="button" data-view="settings">Ajustes</button>
+              </nav>
+            </aside>
+
+            <div class="platform-main">
+              <header class="platform-header">
+                <div>
+                  <p class="section-label">Prototipo navegable</p>
+                  <h2 id="platformTitle">Dashboard</h2>
+                </div>
+                <div class="platform-actions">
+                  <button class="secondary-button" type="button">Exportar</button>
+                  <button class="primary-button" type="button">Nuevo flujo</button>
+                </div>
+              </header>
+
+              <section class="platform-view active" data-view-panel="dashboard">
+                <div class="platform-kpis">
+                  <article>
+                    <span>128</span>
+                    <p>conversaciones hoy</p>
+                  </article>
+                  <article>
+                    <span>82%</span>
+                    <p>resueltas por IA</p>
+                  </article>
+                  <article>
+                    <span>31</span>
+                    <p>turnos gestionados</p>
+                  </article>
+                  <article>
+                    <span>07</span>
+                    <p>requieren humano</p>
+                  </article>
+                </div>
+
+                <div class="platform-grid two-one">
+                  <article class="platform-card">
+                    <h3>Actividad reciente</h3>
+                    <ul class="timeline-list">
+                      <li><strong>09:42</strong> Reserva confirmada para cardiologia, Raul Pereyra.</li>
+                      <li><strong>09:38</strong> Pre-reserva de dermatologia pendiente de cobertura.</li>
+                      <li><strong>09:31</strong> Reclamo priorizado por demora de respuesta.</li>
+                      <li><strong>09:25</strong> Caso sensible escalado y automatizacion bloqueada.</li>
+                    </ul>
+                  </article>
+                  <article class="platform-card">
+                    <h3>Salud del piloto</h3>
+                    <div class="health-meter">
+                      <span style="width: 78%"></span>
+                    </div>
+                    <p>Buen volumen de consultas resueltas. Revisar reclamos y resultados.</p>
+                  </article>
+                </div>
+              </section>
+
+              <section class="platform-view" data-view-panel="inbox">
+                <div class="platform-grid inbox-layout">
+                  <article class="platform-card conversation-list">
+                    <h3>Conversaciones</h3>
+                    <button class="conversation-item active" type="button">
+                      <strong>Maria Gomez</strong>
+                      <span>Pre-reserva dermatologia</span>
+                    </button>
+                    <button class="conversation-item" type="button">
+                      <strong>Raul Pereyra</strong>
+                      <span>Reserva cardiologia</span>
+                    </button>
+                    <button class="conversation-item alert" type="button">
+                      <strong>Laura Medina</strong>
+                      <span>Reclamo prioritario</span>
+                    </button>
+                    <button class="conversation-item" type="button">
+                      <strong>Jorge Diaz</strong>
+                      <span>Reprogramacion</span>
+                    </button>
+                  </article>
+
+                  <article class="platform-card conversation-detail">
+                    <h3>Maria Gomez</h3>
+                    <div class="mini-chat">
+                      <p><strong>Paciente</strong> Tengo OSDE 210. Queria dermatologia.</p>
+                      <p><strong>IA</strong> Hay opciones martes 15:40 o jueves 18:10.</p>
+                      <p><strong>Paciente</strong> Jueves 18:10 me queda bien.</p>
+                      <p><strong>Sistema</strong> Pre-reserva creada, pendiente de validacion.</p>
+                    </div>
+                    <div class="detail-actions">
+                      <button class="primary-button" type="button">Confirmar reserva</button>
+                      <button class="secondary-button" type="button">Derivar</button>
+                    </div>
+                  </article>
+                </div>
+              </section>
+
+              <section class="platform-view" data-view-panel="agenda">
+                <div class="platform-grid">
+                  <article class="platform-card schedule-board">
+                    <h3>Agenda de hoy</h3>
+                    <div class="schedule-row"><span>09:20</span><strong>Cardiologia</strong><p>Disponible</p></div>
+                    <div class="schedule-row booked"><span>11:40</span><strong>Cardiologia</strong><p>Raul Pereyra</p></div>
+                    <div class="schedule-row"><span>15:40</span><strong>Dermatologia</strong><p>Disponible</p></div>
+                    <div class="schedule-row pending"><span>18:10</span><strong>Dermatologia</strong><p>Maria Gomez, validar OSDE</p></div>
+                  </article>
+                  <article class="platform-card">
+                    <h3>Reglas de reserva</h3>
+                    <ul class="compact-list">
+                      <li>Confirmar cobertura antes de cerrar dermatologia.</li>
+                      <li>Permitir pre-reserva si faltan datos no criticos.</li>
+                      <li>Bloquear reservas ante sintomas sensibles.</li>
+                    </ul>
+                  </article>
+                </div>
+              </section>
+
+              <section class="platform-view" data-view-panel="knowledge">
+                <div class="platform-grid">
+                  <article class="platform-card">
+                    <h3>Fuentes activas</h3>
+                    <ul class="source-list">
+                      <li><strong>Horarios y ubicacion</strong><span>Actualizado hoy</span></li>
+                      <li><strong>Especialidades</strong><span>4 servicios publicados</span></li>
+                      <li><strong>Coberturas</strong><span>5 convenios cargados</span></li>
+                      <li><strong>Preparacion de estudios</strong><span>3 guias aprobadas</span></li>
+                    </ul>
+                  </article>
+                  <article class="platform-card">
+                    <h3>Respuesta segura</h3>
+                    <p>Cuando una pregunta no coincide con una fuente aprobada, la IA responde con limite y deriva a recepcion.</p>
+                    <div class="policy-box">No interpretar sintomas, estudios ni diagnosticos.</div>
+                  </article>
+                </div>
+              </section>
+
+              <section class="platform-view" data-view-panel="flows">
+                <div class="flow-canvas">
+                  <article>
+                    <span>Entrada WhatsApp</span>
+                    <p>Paciente envia consulta.</p>
+                  </article>
+                  <article>
+                    <span>Clasificar intencion</span>
+                    <p>Horario, turno, cobertura, resultado, queja o urgencia.</p>
+                  </article>
+                  <article>
+                    <span>Accion</span>
+                    <p>Responder, reservar, pre-reservar o derivar.</p>
+                  </article>
+                  <article>
+                    <span>Registro</span>
+                    <p>Resumen, tags, fuente usada y proximo paso.</p>
+                  </article>
+                </div>
+              </section>
+
+              <section class="platform-view" data-view-panel="metrics">
+                <div class="platform-grid">
+                  <article class="platform-card chart-card">
+                    <h3>Consultas por intencion</h3>
+                    <div class="bar-row"><span>Turnos</span><div><b style="width: 76%"></b></div><strong>76</strong></div>
+                    <div class="bar-row"><span>Cobertura</span><div><b style="width: 48%"></b></div><strong>48</strong></div>
+                    <div class="bar-row"><span>Horarios</span><div><b style="width: 42%"></b></div><strong>42</strong></div>
+                    <div class="bar-row"><span>Resultados</span><div><b style="width: 18%"></b></div><strong>18</strong></div>
+                  </article>
+                  <article class="platform-card">
+                    <h3>Resultado operativo</h3>
+                    <ul class="compact-list">
+                      <li>31 turnos gestionados.</li>
+                      <li>12 pre-reservas pendientes.</li>
+                      <li>7 derivaciones humanas.</li>
+                      <li>2 casos sensibles bloqueados.</li>
+                    </ul>
+                  </article>
+                </div>
+              </section>
+
+              <section class="platform-view" data-view-panel="settings">
+                <div class="settings-grid">
+                  <label>
+                    <span>Modo IA</span>
+                    <select>
+                      <option>Administrativo seguro</option>
+                    </select>
+                  </label>
+                  <label>
+                    <span>Handoff</span>
+                    <select>
+                      <option>Recepcion general</option>
+                    </select>
+                  </label>
+                  <label>
+                    <span>Reserva automatica</span>
+                    <select>
+                      <option>Con datos completos</option>
+                    </select>
+                  </label>
+                  <label>
+                    <span>Urgencias</span>
+                    <select>
+                      <option>Bloquear y escalar</option>
+                    </select>
+                  </label>
+                </div>
+              </section>
+            </div>
           </div>
         </section>
 

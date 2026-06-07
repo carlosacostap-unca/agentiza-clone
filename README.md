@@ -30,6 +30,14 @@ Demo inicial para validar una empresa tipo Agentiza enfocada en automatizacion c
   - resumen;
   - proximo paso.
 - Vista de supervision con cola de conversaciones, base de conocimiento y actividad.
+- Prototipo navegable de plataforma con vistas:
+  - dashboard;
+  - inbox;
+  - agenda;
+  - base de conocimiento;
+  - flujos IA;
+  - metricas;
+  - ajustes.
 - Documentos estrategicos:
   - `dossier-agentiza.md`;
   - `plan-accion-7-dias.md`.
