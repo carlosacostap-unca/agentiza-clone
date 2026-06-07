@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Asistente IA para Clinicas</title>
+    <title>Recepcion IA para Clinicas</title>
     <link rel="stylesheet" href="styles.css" />
   </head>
   <body>
@@ -15,24 +15,69 @@
               <span>AI</span>
             </div>
             <div>
-              <p class="eyebrow">Demo operativa</p>
-              <h1>Asistente IA para Clinicas</h1>
+              <p class="eyebrow">Recepcion IA</p>
+              <h1>Automatizacion para clinicas</h1>
             </div>
           </div>
 
           <div class="top-actions" aria-label="Estado de demo">
-            <span class="status-pill">Clinica San Norte</span>
+            <a class="nav-link" href="#demo">Ver demo</a>
+            <a class="nav-link" href="#piloto">Piloto beta</a>
+            <span class="status-pill">Clinica Luma</span>
             <span class="status-pill live">Simulacion activa</span>
           </div>
         </header>
 
-        <section class="intro-band">
+        <section class="hero-section" aria-label="Landing comercial">
           <div>
-            <p class="section-label">Promesa comercial</p>
-            <h2>Tu recepcion responde 24/7 sin agrandar el equipo.</h2>
+            <p class="section-label">Para consultorios y clinicas con WhatsApp saturado</p>
+            <h2>Tu recepcion responde, ordena y deriva consultas sin perder el control.</h2>
             <p>
-              Esta demo muestra como el asistente responde consultas administrativas,
-              captura datos utiles y escala a una persona cuando aparece un caso sensible.
+              Implementamos un asistente administrativo entrenado con la informacion
+              de tu clinica: horarios, especialidades, cobertura, ubicacion, reglas
+              de agenda y criterios de derivacion humana.
+            </p>
+            <div class="hero-actions">
+              <a class="primary-link" href="#demo">Probar la demo</a>
+              <a class="secondary-link" href="#piloto">Ver paquete beta</a>
+            </div>
+          </div>
+          <aside class="hero-visual" aria-label="Vista resumida del sistema">
+            <div class="visual-toolbar">
+              <span></span>
+              <span></span>
+              <span></span>
+            </div>
+            <div class="visual-card highlighted">
+              <strong>Maria Gomez</strong>
+              <p>Solicita turno de dermatologia para la tarde.</p>
+              <small>Datos capturados: obra social, edad, disponibilidad</small>
+            </div>
+            <div class="visual-grid">
+              <article>
+                <span>82%</span>
+                <p>consultas resueltas</p>
+              </article>
+              <article>
+                <span>12</span>
+                <p>derivaciones</p>
+              </article>
+            </div>
+            <div class="visual-card alert-line">
+              <strong>Escalar</strong>
+              <p>Sintomas sensibles detectados. Respuesta medica bloqueada.</p>
+            </div>
+          </aside>
+        </section>
+
+        <section class="intro-band" aria-label="Contexto de clinica demo">
+          <div>
+            <p class="section-label">Caso demo</p>
+            <h2>Clinica Luma: atencion ambulatoria con agenda mixta.</h2>
+            <p>
+              La demo usa datos ficticios pero realistas: clinica de especialidades
+              en Cordoba, recepcion por WhatsApp, agenda por turnos y derivacion
+              obligatoria ante sintomas o consultas clinicas.
             </p>
           </div>
           <div class="demo-stats" aria-label="Metricas simuladas">
@@ -51,7 +96,7 @@
           </div>
         </section>
 
-        <section class="demo-grid" aria-label="Demo del asistente">
+        <section id="demo" class="demo-grid" aria-label="Demo del asistente">
           <aside class="scenario-panel" aria-label="Escenarios">
             <div class="panel-heading">
               <p class="section-label">Escenarios</p>
@@ -64,7 +109,7 @@
                 <small>Consulta repetitiva resuelta por IA</small>
               </button>
               <button class="scenario-button" type="button" data-scenario="prestacion">
-                <span>Prestacion</span>
+                <span>Prestacion y cobertura</span>
                 <small>Respuesta con datos aprobados</small>
               </button>
               <button class="scenario-button" type="button" data-scenario="turno">
@@ -96,7 +141,7 @@
               <header class="chat-header">
                 <div class="contact-avatar" aria-hidden="true">CS</div>
                 <div>
-                  <h2>Clinica San Norte</h2>
+                  <h2>Clinica Luma</h2>
                   <p>Asistente administrativo</p>
                 </div>
                 <span class="channel-badge">WhatsApp</span>
@@ -160,7 +205,7 @@
           </aside>
         </section>
 
-        <section class="bottom-grid" aria-label="Paquete comercial">
+        <section id="piloto" class="bottom-grid" aria-label="Paquete comercial">
           <article class="plain-section">
             <p class="section-label">Paquete beta</p>
             <h2>Implementacion inicial acotada</h2>

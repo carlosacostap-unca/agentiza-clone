@@ -5,6 +5,7 @@ Demo inicial para validar una empresa tipo Agentiza enfocada en automatizacion c
 ## Que incluye
 
 - Chat simulado estilo WhatsApp para pacientes.
+- Landing comercial para presentar el piloto beta.
 - Escenarios administrativos de clinica:
   - horarios;
   - prestaciones;
@@ -34,3 +35,7 @@ Archivo principal:
 ## Objetivo del MVP
 
 Tener una demo vendible para mostrar a prospectos antes de integrar WhatsApp real. La prioridad es validar el dolor, el mensaje comercial, las objeciones y la disposicion a pagar.
+
+## Clinica ficticia usada en la demo
+
+La demo usa `Clinica Luma`, una clinica ambulatoria ficticia con especialidades, coberturas, ubicacion y reglas de escalamiento definidas para mostrar un caso mas cercano a una conversacion real.

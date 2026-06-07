@@ -2,49 +2,49 @@ const scenarios = {
   horarios: {
     intent: "Horarios",
     status: "Resuelto",
-    patient: "Hola, quisiera saber los horarios de atencion.",
+    patient: "Hola, quisiera saber los horarios y donde estan.",
     assistant:
-      "Hola. La Clinica San Norte atiende de lunes a viernes de 8:00 a 20:00 y sabados de 9:00 a 13:00. Si queres, tambien puedo ayudarte a pedir un turno.",
+      "Hola. Clinica Luma atiende en Av. Colon 1840, Cordoba. La recepcion funciona de lunes a viernes de 8:00 a 20:00 y sabados de 9:00 a 13:00. Si queres, puedo ayudarte a pedir un turno.",
     data: {
       Canal: "WhatsApp",
       Nombre: "No informado",
-      Motivo: "Consulta de horarios",
+      Motivo: "Horarios y ubicacion",
       Riesgo: "Bajo",
     },
     summary:
-      "El paciente consulta horarios de atencion. La IA responde con informacion aprobada y no requiere intervencion.",
+      "El paciente consulta horarios y ubicacion. La IA responde con informacion aprobada y no requiere intervencion.",
     nextStep: "Sin accion pendiente.",
   },
   prestacion: {
-    intent: "Prestacion",
+    intent: "Prestacion y cobertura",
     status: "Respondido",
-    patient: "Buenas, hacen controles oftalmologicos?",
+    patient: "Buenas, atienden dermatologia con OSDE?",
     assistant:
-      "Si, la clinica realiza controles oftalmologicos generales. Para orientarte mejor, puedo tomar tus datos y pasar la solicitud a recepcion para confirmar profesional, disponibilidad y cobertura.",
+      "Si, Clinica Luma atiende dermatologia, clinica medica, cardiologia y oftalmologia. Trabajamos con OSDE, Swiss Medical, Galeno, Sancor Salud y particulares. Para confirmar cobertura segun tu plan, puedo tomar tus datos y pasar la solicitud a recepcion.",
     data: {
       Canal: "WhatsApp",
       Nombre: "No informado",
-      Motivo: "Control oftalmologico",
+      Motivo: "Dermatologia con OSDE",
       Riesgo: "Bajo",
     },
     summary:
-      "El paciente consulta por una prestacion. La IA confirma informacion general aprobada y propone capturar datos para recepcion.",
-    nextStep: "Pedir nombre, cobertura y franja horaria preferida.",
+      "El paciente consulta por dermatologia y cobertura OSDE. La IA confirma informacion general aprobada y propone capturar datos para recepcion.",
+    nextStep: "Pedir nombre, DNI, cobertura, plan y franja horaria preferida.",
   },
   turno: {
     intent: "Solicitud de turno",
     status: "Pendiente",
-    patient: "Necesito sacar turno para la semana que viene.",
+    patient: "Necesito sacar turno para cardiologia la semana que viene.",
     assistant:
-      "Claro. Para dejar la solicitud ordenada, pasame por favor nombre completo, especialidad o motivo de consulta, cobertura y si preferis manana o tarde. Recepcion confirma el horario disponible.",
+      "Claro. Para dejar la solicitud ordenada, pasame por favor nombre completo, DNI, cobertura medica y si preferis manana o tarde. Recepcion confirma el horario disponible para cardiologia.",
     data: {
       Canal: "WhatsApp",
       Nombre: "Pendiente",
-      Motivo: "Solicitud de turno",
+      Motivo: "Turno de cardiologia",
       Riesgo: "Bajo",
     },
     summary:
-      "El paciente quiere pedir turno. La IA solicita datos minimos antes de derivar a recepcion.",
+      "El paciente quiere pedir turno de cardiologia. La IA solicita datos minimos antes de derivar a agenda.",
     nextStep: "Esperar datos del paciente y derivar a agenda.",
   },
   humano: {
@@ -85,7 +85,7 @@ const fallback = {
   intent: "No clasificado",
   status: "Revisar",
   assistant:
-    "Puedo ayudarte con horarios, prestaciones, solicitud de turno o derivarte a recepcion. Si tu consulta es medica o urgente, la paso a una persona.",
+    "Puedo ayudarte con horarios, ubicacion, especialidades, coberturas, solicitud de turno o derivarte a recepcion. Si tu consulta es medica o urgente, la paso a una persona.",
   data: {
     Canal: "WhatsApp",
     Nombre: "No informado",
@@ -190,6 +190,13 @@ function detectScenario(text) {
   if (
     normalized.includes("control") ||
     normalized.includes("prestacion") ||
+    normalized.includes("especialidad") ||
+    normalized.includes("dermatologia") ||
+    normalized.includes("cardiologia") ||
+    normalized.includes("oftalmologia") ||
+    normalized.includes("osde") ||
+    normalized.includes("swiss") ||
+    normalized.includes("galeno") ||
     normalized.includes("consulta") ||
     normalized.includes("precio") ||
     normalized.includes("cobertura")
@@ -199,6 +206,9 @@ function detectScenario(text) {
 
   if (
     normalized.includes("horario") ||
+    normalized.includes("ubicacion") ||
+    normalized.includes("direccion") ||
+    normalized.includes("colon") ||
     normalized.includes("abren") ||
     normalized.includes("atienden") ||
     normalized.includes("sabado")
